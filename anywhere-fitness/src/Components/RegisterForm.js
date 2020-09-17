@@ -11,17 +11,14 @@ const RegisterForm = () => {
         username: "",
         password: "",
     }
-
     const [newUser, setNewUser] = useState(user)
-    const [startDate, setStartDate] = useState(new Date());
 
     const submitUser = e => {
         e.preventDefault();
         console.log("New User Created");
         axios
             .post("https://reqres.in/api/users", newUser)
-            .then(() => console.log("New User Created Successfully"))
-            .catch(err => console.log(err, "New User Not Created"));
+             .catch(err => console.log(err, "New User Not Created"));
     };
 
     const inputChange = e => {
@@ -33,6 +30,22 @@ const RegisterForm = () => {
             console.log(e.target.value);
     }
 
+    const radioButtons  = {
+        value : ""
+    }
+    console.log(radioButtons)
+    const[radioButton, setRadioButton] = useState(radioButtons)
+
+    const radioButtonChange = e => {
+        setRadioButton({
+            ...radioButton,
+            [e.target.name]:e.target.value
+        });
+            console.log(e.target.name);
+            console.log(e.target.value);
+    }
+
+    const [startDate, setStartDate] = useState(new Date());
 
     return (
         <div>
@@ -97,13 +110,20 @@ const RegisterForm = () => {
                     <label htmlFor="account"> CLIENT</label>
                         <input
                             type="radio"
+                            onChange={radioButtonChange}
+                            value="Client"
+                            checked={radioButton.value === "Client"}
                             name="client"
                             id="account"
                         />
+                        
 
                     <label htmlFor="account">INSTRUCTOR</label>
                         <input
                             type="radio"
+                            onChange={radioButtonChange}
+                            value="Instructor"
+                            checked={radioButton.value === false}
                             name="instructor"
                             id="account"
                         />
