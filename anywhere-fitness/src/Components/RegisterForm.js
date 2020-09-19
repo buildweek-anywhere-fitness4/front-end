@@ -246,7 +246,7 @@ const Form = styled.form`
     background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
     padding: 1%;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 75%;
     transform: translate(-50%, -50%);
     margin-top: 10%;
