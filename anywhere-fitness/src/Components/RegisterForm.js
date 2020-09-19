@@ -242,12 +242,11 @@ const Video = styled.video`
     width: 100%;
 `
 const Form = styled.form`
-    
     box-shadow: 1px 1px 5px;
     background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
     padding: 1%;
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 75%;
     transform: translate(-50%, -50%);
     margin-top: 10%;
