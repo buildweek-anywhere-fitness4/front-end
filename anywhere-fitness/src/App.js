@@ -1,6 +1,8 @@
 import React from 'react';
-import RegisterForm from './Components/RegisterForm'
-import { Route, Link } from "react-router-dom"
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import RegisterForm from './Components/RegisterForm';
+import LoginForm from './Components/LoginForm';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import './App.css';
 
 function App() {
@@ -17,3 +19,4 @@ function App() {
 }
 
 export default App;
+
