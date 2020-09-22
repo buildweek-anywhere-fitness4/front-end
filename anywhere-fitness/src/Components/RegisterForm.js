@@ -1,33 +1,36 @@
 import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import axios from 'axios';
-import "react-datepicker/dist/react-datepicker.css";
 
-const RegisterForm = () => {
-    const user = {
+
+//import "react-datepicker/dist/react-datepicker.css";
+
+    const initialState = {
         firstname: "",
         lastname: "",
         email: "",
         username: "",
         password: "",
-    }
-    const [newUser, setNewUser] = useState(user)
+    };
+
+const RegisterForm = () => {
+    
+    const [formState, setFormState] = useState(initialState)
 
     const submitUser = e => {
         e.preventDefault();
         console.log("New User Created");
+        
         axios
-            .post("https://reqres.in/api/users", newUser)
+            .post("https://anywhere-fitness4.herokuapp.com/api/auth/client_register", formState)
+             .then(res=> console.log(res))
              .catch(err => console.log(err, "New User Not Created"));
     };
 
     const inputChange = e => {
-        setNewUser({
-            ...newUser,
-            [e.target.name]:e.target.value
-        });
-            console.log(e.target.name);
-            console.log(e.target.value);
+    
+       setFormState({ ...formState, [e.target.name]: e.target.value });
+            
     }
 
     const radioButtons  = {
@@ -37,10 +40,7 @@ const RegisterForm = () => {
     const[radioButton, setRadioButton] = useState(radioButtons)
 
     const radioButtonChange = e => {
-        setRadioButton({
-            ...radioButton,
-            [e.target.name]:e.target.value
-        });
+        setRadioButton(!e.target.value);
             console.log(e.target.name);
             console.log(e.target.value);
     }
@@ -50,82 +50,82 @@ const RegisterForm = () => {
     return (
         <div>
             <form onSubmit={submitUser}>
-                <div className="enterfirstname">
-                    <label htmlFor="first-name">FIRST NAME</label>
+                <div className="firstname">
+                    <label htmlFor="firstname">FIRST NAME</label>
                         <input
                             type="text"
-                            name="userfirstname"
-                            id="first-name"
+                            name="firstname"
+                            id="firstname"
                             placeholder="First Name"
                             onChange={inputChange}
-                            value={newUser.firstname}
+                            value={formState.firstname}
                         />
                 </div>
-                <div className="enterlastname">
-                    <label htmlFor="last-name">LAST NAME</label>
+                <div className="lastname">
+                    <label htmlFor="lastname">LAST NAME</label>
                         <input
                             onChange={inputChange}
-                            value={newUser.lastname}
+                            value={formState.lastname}
                             type="text"
-                            name="userlastname"
-                            id="last-name"
+                            name="lastname"
+                            id="lastname"
                             placeholder="Last Name"
                         />
                 </div>
-                <div className="enteremail">
-                    <label htmlFor="new-email"> EMAIL</label>
+                <div className="email">
+                    <label htmlFor="email"> EMAIL</label>
                         <input
                             onChange={inputChange}
-                            value={newUser.email}
+                            value={formState.email}
                             type="text"
-                            name="useremail"
-                            id="new-email"
+                            name="email"
+                            id="email"
                             placeholder="Enter a valid email"
                         />
                 </div>
-                <div className="createusername">
-                <label htmlFor="new-username">USERNAME</label>
+                <div className="username">
+                <label htmlFor="username">USERNAME</label>
                         <input
                             onChange={inputChange}
-                            value={newUser.username}
+                            value={formState.username}
                             type="text"
-                            name="Username"
-                            id="new-username"
+                            name="username"
+                            id="username"
                             placeholder="A minimum of 8 characters"
                         />
                 </div>
-                <div className="createpassword">
-                    <label htmlFor="enter-password">PASSWORD</label>
+                <div className="password">
+                    <label htmlFor="password">PASSWORD</label>
                         <input
                             onChange={inputChange}
-                            value={newUser.password}
-                            type="text"
-                            name="user-password"
-                            id="enter-password"
+                            value={formState.password}
+                            type="password"
+                            name="password"
+                            id="password"
                             placeholder="A minimum of 8 characters"
                         />
                 </div>
                 
                 <div className="accounttype">
-                    <label htmlFor="account"> CLIENT</label>
+                    <label htmlFor="client"> CLIENT</label>
                         <input
                             type="radio"
                             onChange={radioButtonChange}
-                            value="Client"
-                            checked={radioButton.value === "Client"}
-                            name="client"
-                            id="account"
+                            value="client"
+                            checked={radioButton}
+                            name="account-type"
+                            id="client"
                         />
                         
 
-                    <label htmlFor="account">INSTRUCTOR</label>
+                    <label htmlFor="instructor">INSTRUCTOR</label>
                         <input
                             type="radio"
                             onChange={radioButtonChange}
-                            value="Instructor"
-                            checked={radioButton.value === false}
-                            name="instructor"
-                            id="account"
+                            value="instructor"
+                            checked={radioButton}
+                            name="account-type"
+                            id="instructor"
                         />
                 </div>
                 <div className="dob">
@@ -139,7 +139,7 @@ const RegisterForm = () => {
                         dropdownMode="select"
                        
                     />
-                </div>
+                </div> 
                 <div className="submitform">
                     <button type='submit'>SIGN UP</button>
                 </div>
