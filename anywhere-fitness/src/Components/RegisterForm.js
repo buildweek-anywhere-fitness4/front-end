@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import axios from 'axios';
 import "react-datepicker/dist/react-datepicker.css";
+import styled from 'styled-components'
+import WebsiteVideo from './WebsiteVideo.mp4'
 
 const RegisterForm = () => {
     const user = {
@@ -47,12 +49,22 @@ const RegisterForm = () => {
 
     const [startDate, setStartDate] = useState(new Date());
 
+    const backgroundVideo = WebsiteVideo
+
     return (
-        <div>
-            <form onSubmit={submitUser}>
-                <div className="enterfirstname">
-                    <label htmlFor="first-name">FIRST NAME</label>
-                        <input
+        <Container>
+              <Video id="background-video" loop autoPlay>
+                    <source src={backgroundVideo}type="video/mp4" />
+                    Your browser does not support the video tag.
+                </Video>
+            <Form onSubmit={submitUser}>
+            <Titlediv className="formtitle">
+                <h1>GET YOUR HEALTHY LIFE</h1> 
+                <h2>REGISTER NOW</h2>
+                </Titlediv>
+                <Divstyles className="enterfirstname">
+                    <Labelstyles htmlFor="first-name">FIRST NAME</Labelstyles>
+                        <Input
                             type="text"
                             name="userfirstname"
                             id="first-name"
@@ -60,10 +72,10 @@ const RegisterForm = () => {
                             onChange={inputChange}
                             value={newUser.firstname}
                         />
-                </div>
-                <div className="enterlastname">
-                    <label htmlFor="last-name">LAST NAME</label>
-                        <input
+                </Divstyles>
+                <Divstyles className="enterlastname">
+                    <Labelstyles htmlFor="last-name">LAST NAME</Labelstyles>
+                        <Input
                             onChange={inputChange}
                             value={newUser.lastname}
                             type="text"
@@ -71,10 +83,10 @@ const RegisterForm = () => {
                             id="last-name"
                             placeholder="Last Name"
                         />
-                </div>
-                <div className="enteremail">
-                    <label htmlFor="new-email"> EMAIL</label>
-                        <input
+                </Divstyles>
+                <Divstyles className="enteremail">
+                    <Labelstyles htmlFor="new-email"> EMAIL</Labelstyles>
+                        <Input
                             onChange={inputChange}
                             value={newUser.email}
                             type="text"
@@ -82,10 +94,10 @@ const RegisterForm = () => {
                             id="new-email"
                             placeholder="Enter a valid email"
                         />
-                </div>
-                <div className="createusername">
-                <label htmlFor="new-username">USERNAME</label>
-                        <input
+                </Divstyles>
+                <Divstyles className="createusername">
+                    <Labelstyles htmlFor="new-username">USERNAME</Labelstyles>
+                        <Input
                             onChange={inputChange}
                             value={newUser.username}
                             type="text"
@@ -93,10 +105,10 @@ const RegisterForm = () => {
                             id="new-username"
                             placeholder="A minimum of 8 characters"
                         />
-                </div>
-                <div className="createpassword">
-                    <label htmlFor="enter-password">PASSWORD</label>
-                        <input
+                </Divstyles>
+                <Divstyles className="createpassword">
+                    <Labelstyles htmlFor="enter-password">PASSWORD</Labelstyles>
+                        <Input
                             onChange={inputChange}
                             value={newUser.password}
                             type="text"
@@ -104,11 +116,11 @@ const RegisterForm = () => {
                             id="enter-password"
                             placeholder="A minimum of 8 characters"
                         />
-                </div>
+                </Divstyles>
                 
-                <div className="accounttype">
-                    <label htmlFor="account"> CLIENT</label>
-                        <input
+                <Divstyles className="accounttype">
+                    <Labelstyles htmlFor="account"> CLIENT</Labelstyles>
+                        <Input
                             type="radio"
                             onChange={radioButtonChange}
                             value="Client"
@@ -118,8 +130,8 @@ const RegisterForm = () => {
                         />
                         
 
-                    <label htmlFor="account">INSTRUCTOR</label>
-                        <input
+                    <Labelstyles htmlFor="account">INSTRUCTOR</Labelstyles>
+                        <Input
                             type="radio"
                             onChange={radioButtonChange}
                             value="Instructor"
@@ -127,9 +139,9 @@ const RegisterForm = () => {
                             name="instructor"
                             id="account"
                         />
-                </div>
-                <div className="dob">
-                    <label htmlFor="birthday">DOB</label>
+                </Divstyles>
+                <Divstyles className="dob">
+                    <Labelstyles htmlFor="birthday">DOB</Labelstyles>
                     <DatePicker 
                         selected={startDate}
                         onChange={date => setStartDate(date)}
@@ -139,13 +151,147 @@ const RegisterForm = () => {
                         dropdownMode="select"
                        
                     />
-                </div>
-                <div className="submitform">
-                    <button type='submit'>SIGN UP</button>
-                </div>
-            </form>
-        </div>
+                </Divstyles>
+                <Divstyles className="submitform">
+                    <Button type='submit'>SIGN UP</Button>
+                </Divstyles>
+            </Form>
+            <Anywherefitness className="anywhere-fitness">
+                <h1>ANYWHERE FITNESS LETS CLIENTS AND INSTRUCTORS TAKE CONTROL OVER THEIR FITNESS</h1>
+            </Anywherefitness>
+            <Accountbox className="account-box">
+                <Clientbox className="client-box">
+                    <Clientpackage className="clinet-package">
+                        <h1>CLIENT ACCOUNT</h1>
+                        <h2>GROUP CLASSES TO</h2>
+                        <h3>FIT ANY PREFERENCE OR SCHEDULE</h3>
+                    </Clientpackage>
+                </Clientbox>
+
+                <Instructorbox className="instructor-box">
+                    <Instructorpackage className = "instructor-package">
+                        <h1>INSTRUCTOR ACCOUNT</h1>
+                        <h2>SCHEDULE CLASSES AND RETAIN CLIENTS</h2>
+                        <h3>TEACH ANYWHERE WITH ANYWHERE FITNESS</h3>
+                    </Instructorpackage>
+                </Instructorbox>
+            </Accountbox>
+        </Container>
     )
 }
 
-export default RegisterForm
+const Anywherefitness = styled.div`
+    color: #f1faee;
+    text-shadow: 2px 2px black;
+    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
+    padding: 1%;
+`
+
+const Accountbox = styled.div`
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    color: #f1faee;
+    text-shadow: 2px 2px black;
+    margin-left: 5%;
+    margin-right: 5%;
+`
+const Clientbox = styled.div`
+    border: 1px solid black;
+    background-image: url("https://images.pexels.com/photos/866023/pexels-photo-866023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: 1500px 1000px;
+    background-position: center;
+    height: 800px;
+    width: 100%;
+`
+const Clientpackage = styled.div`
+    box-shadow: 1px 1px 5px black;
+    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
+    padding: 1%;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 10%;   
+`
+
+const Instructorbox = styled.div`
+    border: 1px solid black;
+    background-image: url("https://images.pexels.com/photos/3822689/pexels-photo-3822689.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    height: 800px;
+    width: 100%;
+    margin-left: 1%;
+    background-position: center;
+`
+const Instructorpackage = styled.div`
+    box-shadow: 1px 1px 5px black;
+    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
+    padding: 1%;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 10%;
+`
+const Container = styled.div`
+    height: 1000px;
+    text-shadow: 2px 2px black;  
+`
+const Video = styled.video`
+    width: 100%;
+`
+const Form = styled.form`
+    box-shadow: 1px 1px 5px;
+    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
+    padding: 1%;
+    position: absolute;
+    top: 40%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    margin-top: 10%;
+`
+
+const Divstyles = styled.div`
+    margin-bottom: 1%;
+    color: #f1faee;
+`
+const Titlediv = styled.div`
+    background-image: linear-gradient(to right, rgba(60,152,255,.5), rgba(60,152,255,.5), rgba(60,152,255,.5));
+    color: #f1faee;
+    font-family: 'Merriweather Sans', sans-serif;
+    box-shadow: 1px 1px 5px black;
+    margin-bottom: 3%;
+    width: 400px;
+    padding: 1%;
+`
+const Input = styled.input`
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+    padding: 3px 2px;
+    margin: 8px 0;
+    box-sizing: border-box;
+`
+const Dob = styled.div`
+    color: #f1faee;
+    margin-bottom: 1%;
+    width: 100%;
+    padding: 3px 2px;
+    margin: 8px 0;
+    box-sizing: border-box;
+`
+
+const Labelstyles = styled.label`
+    margin-right: 1%;
+`
+const Button = styled.button`
+    background-image: linear-gradient(to right, rgba(0,78,164,.7), rgba(0,78,164,.5), rgba(0,78,164,.5));
+    color: #f1faee;
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+    padding: 13px 2px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px black;
+`
+export default RegisterForm;
