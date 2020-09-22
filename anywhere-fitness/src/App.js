@@ -2,7 +2,8 @@ import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import RegisterForm from './Components/RegisterForm';
 import LoginForm from './Components/LoginForm';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import styled from 'styled-components'
 import './App.css';
 
 // function App() {
