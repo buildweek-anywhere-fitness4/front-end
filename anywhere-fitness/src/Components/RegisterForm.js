@@ -62,58 +62,58 @@ const RegisterForm = () => {
                 <h1>GET YOUR HEALTHY LIFE</h1> 
                 <h2>REGISTER NOW</h2>
                 </Titlediv>
-                <Divstyles className="enterfirstname">
-                    <Labelstyles htmlFor="first-name">FIRST NAME</Labelstyles>
+                <Divstyles className="firstname">
+                    <Labelstyles htmlFor="firstname">FIRST NAME</Labelstyles>
                         <Input
                             type="text"
-                            name="userfirstname"
-                            id="first-name"
+                            name="firstname"
+                            id="firstname"
                             placeholder="First Name"
                             onChange={inputChange}
                             value={newUser.firstname}
                         />
                 </Divstyles>
-                <Divstyles className="enterlastname">
-                    <Labelstyles htmlFor="last-name">LAST NAME</Labelstyles>
+                <Divstyles className="lastname">
+                    <Labelstyles htmlFor="lastname">LAST NAME</Labelstyles>
                         <Input
                             onChange={inputChange}
                             value={newUser.lastname}
                             type="text"
-                            name="userlastname"
-                            id="last-name"
+                            name="lastname"
+                            id="lastname"
                             placeholder="Last Name"
                         />
                 </Divstyles>
-                <Divstyles className="enteremail">
-                    <Labelstyles htmlFor="new-email"> EMAIL</Labelstyles>
+                <Divstyles className="email">
+                    <Labelstyles htmlFor="email"> EMAIL</Labelstyles>
                         <Input
                             onChange={inputChange}
                             value={newUser.email}
                             type="text"
-                            name="useremail"
-                            id="new-email"
+                            name="email"
+                            id="email"
                             placeholder="Enter a valid email"
                         />
                 </Divstyles>
-                <Divstyles className="createusername">
-                    <Labelstyles htmlFor="new-username">USERNAME</Labelstyles>
+                <Divstyles className="username">
+                    <Labelstyles htmlFor="username">USERNAME</Labelstyles>
                         <Input
                             onChange={inputChange}
                             value={newUser.username}
                             type="text"
-                            name="Username"
-                            id="new-username"
+                            name="username"
+                            id="username"
                             placeholder="A minimum of 8 characters"
                         />
                 </Divstyles>
-                <Divstyles className="createpassword">
-                    <Labelstyles htmlFor="enter-password">PASSWORD</Labelstyles>
+                <Divstyles className="password">
+                    <Labelstyles htmlFor="password">PASSWORD</Labelstyles>
                         <Input
                             onChange={inputChange}
                             value={newUser.password}
                             type="text"
-                            name="user-password"
-                            id="enter-password"
+                            name="password"
+                            id="password"
                             placeholder="A minimum of 8 characters"
                         />
                 </Divstyles>
@@ -140,7 +140,7 @@ const RegisterForm = () => {
                             id="account"
                         />
                 </Divstyles>
-                <Divstyles className="dob">
+                <Dob className="dob">
                     <Labelstyles htmlFor="birthday">DOB</Labelstyles>
                     <DatePicker 
                         selected={startDate}
@@ -151,7 +151,7 @@ const RegisterForm = () => {
                         dropdownMode="select"
                        
                     />
-                </Divstyles>
+                </Dob>
                 <Divstyles className="submitform">
                     <Button type='submit'>SIGN UP</Button>
                 </Divstyles>
