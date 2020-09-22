@@ -13,16 +13,27 @@ import axios from 'axios';
         password: "",
     };
 
+    const currentUser = {
+        username: "",
+        password: ""
+    };
+
+
 const RegisterForm = () => {
+    
+    const [user, setUser] = useState(currentUser);
     
     const [formState, setFormState] = useState(initialState)
 
     const submitUser = e => {
         e.preventDefault();
         console.log("New User Created");
+        setUser({
+            username: formState.username, 
+            password: formState.password
+            })
         
-        axios
-            .post("https://anywhere-fitness4.herokuapp.com/api/auth/client_register", formState)
+        axios.post("https://anywhere-fitness4.herokuapp.com/api/auth/client_register", user)
              .then(res=> console.log(res))
              .catch(err => console.log(err, "New User Not Created"));
     };
