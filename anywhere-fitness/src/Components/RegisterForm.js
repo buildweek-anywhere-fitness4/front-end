@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import "react-datepicker/dist/react-datepicker.css";
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import WebsiteVideo from './WebsiteVideo.mp4'
+import  './RegisterForm.css'
 
 const RegisterForm = () => {
     const user = {
@@ -71,12 +72,10 @@ const RegisterForm = () => {
             console.log(e.target.value);
     }
 
-    const instructorCode = e => {
-        
-
-    }
 
     const [startDate, setStartDate] = useState(new Date());
+
+    
 
     const backgroundVideo = WebsiteVideo
 
@@ -176,8 +175,19 @@ const RegisterForm = () => {
                     <FormGroup>
                         <Label check>
                             <Input 
-                            type="radio" name="instructor"/>{'Instructor'}
+                                
+                                type="radio" name="instructor"
+                                id="instructor"
+                                
+                            />{'Instructor'}
                         </Label>
+                        <FormGroup className="instructorcode">
+                                <Input
+                                    type="text"
+                                    name="code"
+                                    required=""
+                                />
+                        </FormGroup>
                     </FormGroup>
                 </FormGroup>
 
