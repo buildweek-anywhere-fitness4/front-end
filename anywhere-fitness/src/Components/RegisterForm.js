@@ -7,13 +7,13 @@ import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import WebsiteVideo from './WebsiteVideo.mp4'
 
 const RegisterForm = () => {
-    const user = {
+    const [user, setUser] = useState( {
         firstname: "",
         lastname: "",
         email: "",
         username: "",
         password: "",
-    }
+    });
     const [newUser, setNewUser] = useState(user)
 
     let formSchema=yup.object().shape({
@@ -41,10 +41,16 @@ const RegisterForm = () => {
 
     const submitUser = e => {
         e.preventDefault();
-        console.log("New User Created");
-        axios
-            .post("https://reqres.in/api/users", newUser)
+      
+        setUser({
+            username: formState.username, 
+            password: formState.password
+            })
+        
+        axios.post("https://anywhere-fitness4.herokuapp.com/api/auth/client_register", user)
+             .then(res=> console.log(res))
              .catch(err => console.log(err, "New User Not Created"));
+    };
     };
 
     const inputChange = e => {
