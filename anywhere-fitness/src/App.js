@@ -28,7 +28,7 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
           <Link className="navbar-brand" to={"/LoginForm"}>Anywhere Fitness</Link>
-          <div className="collapse navbar-collapse" id="">
+          <div className="collapse navbar-collapse" id="#">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link className="nav-link" to={"/LoginForm"}>Login</Link>
