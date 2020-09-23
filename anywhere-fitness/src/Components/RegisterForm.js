@@ -44,6 +44,7 @@ const RegisterForm = () => {
         console.log("New User Created");
         axios
             .post("https://reqres.in/api/users", newUser)
+             .then(res=>console.log(res))
              .catch(err => console.log(err, "New User Not Created"));
     };
 
