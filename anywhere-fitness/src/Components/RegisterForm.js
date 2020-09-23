@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import axios from 'axios';
+import * as yup from 'yup';
 import "react-datepicker/dist/react-datepicker.css";
-import styled from 'styled-components'
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import WebsiteVideo from './WebsiteVideo.mp4'
 
 const RegisterForm = () => {
@@ -14,6 +15,29 @@ const RegisterForm = () => {
         password: "",
     }
     const [newUser, setNewUser] = useState(user)
+
+    let formSchema=yup.object().shape({
+        firstname: yup
+            .string()
+            .required(),
+        lastname: yup
+            .string()
+            .required(),
+        email: yup
+            .string()
+            .email()
+            .required(),
+        username: yup
+            .string()
+            .required(),
+        password: yup
+            .string()
+            .required('Please Enter your password')
+            .matches(
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})+$/,
+                "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+            )
+        })
 
     const submitUser = e => {
         e.preventDefault();
@@ -47,101 +71,118 @@ const RegisterForm = () => {
             console.log(e.target.value);
     }
 
+    const instructorCode = e => {
+        
+
+    }
+
     const [startDate, setStartDate] = useState(new Date());
 
     const backgroundVideo = WebsiteVideo
 
     return (
-        <Container>
-              <Video id="background-video" loop autoPlay>
+        <div style={{marginTop: '3%'}}>
+              <video id="background-video" loop autoPlay style={{width: '100%', height: '95%', padding: '3.0%'}}>
                     <source src={backgroundVideo}type="video/mp4" />
                     Your browser does not support the video tag.
-                </Video>
-            <Form onSubmit={submitUser}>
-            <Titlediv className="formtitle">
-                <h1>GET YOUR HEALTHY LIFE</h1> 
-                <h2>REGISTER NOW</h2>
-                </Titlediv>
-                <Divstyles className="firstname">
-                    <Labelstyles htmlFor="firstname">FIRST NAME</Labelstyles>
-                        <Input
-                            type="text"
-                            name="firstname"
-                            id="firstname"
-                            placeholder="First Name"
-                            onChange={inputChange}
-                            value={newUser.firstname}
-                        />
-                </Divstyles>
-                <Divstyles className="lastname">
-                    <Labelstyles htmlFor="lastname">LAST NAME</Labelstyles>
-                        <Input
-                            onChange={inputChange}
-                            value={newUser.lastname}
-                            type="text"
-                            name="lastname"
-                            id="lastname"
-                            placeholder="Last Name"
-                        />
-                </Divstyles>
-                <Divstyles className="email">
-                    <Labelstyles htmlFor="email"> EMAIL</Labelstyles>
-                        <Input
-                            onChange={inputChange}
-                            value={newUser.email}
-                            type="text"
-                            name="email"
-                            id="email"
-                            placeholder="Enter a valid email"
-                        />
-                </Divstyles>
-                <Divstyles className="username">
-                    <Labelstyles htmlFor="username">USERNAME</Labelstyles>
-                        <Input
-                            onChange={inputChange}
-                            value={newUser.username}
-                            type="text"
-                            name="username"
-                            id="username"
-                            placeholder="A minimum of 8 characters"
-                        />
-                </Divstyles>
-                <Divstyles className="password">
-                    <Labelstyles htmlFor="password">PASSWORD</Labelstyles>
-                        <Input
-                            onChange={inputChange}
-                            value={newUser.password}
-                            type="text"
-                            name="password"
-                            id="password"
-                            placeholder="A minimum of 8 characters"
-                        />
-                </Divstyles>
-                
-                <Divstyles className="accounttype">
-                    <Labelstyles htmlFor="account"> CLIENT</Labelstyles>
-                        <Input
-                            type="radio"
-                            onChange={radioButtonChange}
-                            value="Client"
-                            checked={radioButton.value === "Client"}
-                            name="client"
-                            id="account"
-                        />
-                        
+                </video>
+            <Form 
+                onSubmit={submitUser} 
 
-                    <Labelstyles htmlFor="account">INSTRUCTOR</Labelstyles>
-                        <Input
-                            type="radio"
-                            onChange={radioButtonChange}
-                            value="Instructor"
-                            checked={radioButton.value === false}
-                            name="instructor"
-                            id="account"
-                        />
-                </Divstyles>
-                <Dob className="dob">
-                    <Labelstyles htmlFor="birthday">DOB</Labelstyles>
+                formschema={formSchema} 
+
+                style={{position: 'absolute', top: '16%', left: '50%', backgroundImage: 'linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5))', padding: '2.61%', color: '#f1faee',textShadow: '2px 2px black', boxShadow: '1px 1px 5px black'}}>
+
+                <FormGroup 
+                    className="formtitle" 
+                    style={{backgroundImage: 'linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5))', padding: '1%', boxShadow: '1px 1px 5px black'}}>
+                        <h1>GET YOUR HEALTHY LIFE</h1> 
+                        <h2>REGISTER NOW!</h2>
+                </FormGroup>
+
+                <FormGroup 
+                    className="firstname">
+                        <Label for="firstname">FIRST NAME</Label>
+                            <Input
+                                type="firstname"
+                                name="firstname"
+                                id="firstname"
+                                placeholder="First Name"
+                                onChange={inputChange}
+                                value={newUser.firstname}
+                            />
+                </FormGroup>
+
+                <FormGroup 
+                    className="lastname">
+                        <Label for="lastname">LAST NAME</Label>
+                            <Input
+                                onChange={inputChange}
+                                value={newUser.lastname}
+                                type="lastname"
+                                name="lastname"
+                                id="lastname"
+                                placeholder="Last Name"
+                            />
+                </FormGroup>
+
+                <FormGroup 
+                    className="email">
+                        <Label for="email"> EMAIL</Label>
+                            <Input
+                                onChange={inputChange}
+                                value={newUser.email}
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Enter a valid email"
+                            />
+                </FormGroup>
+
+                <FormGroup 
+                    className="username">
+                        <Label for="username">USERNAME</Label>
+                            <Input
+                                onChange={inputChange}
+                                value={newUser.username}
+                                type="username"
+                                name="username"
+                                id="username"
+                                placeholder="A minimum of 8 characters"
+                            />
+                </FormGroup>
+
+                <FormGroup 
+                    className="password">
+                        <Label htmlFor="password">PASSWORD</Label>
+                            <Input
+                                onChange={inputChange}
+                                value={newUser.password}
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="A minimum of 8 characters"
+                            />
+                </FormGroup>
+                
+                <FormGroup check style={{display: 'flex', flexFlow: 'row', justifyContent: 'space-evenly'}}>
+                    <FormGroup>
+                        <Label check>
+                            <Input 
+                                type="radio" 
+                                name="client"/>{'Client'}
+                        </Label>
+                    </FormGroup> 
+                    <FormGroup>
+                        <Label check>
+                            <Input 
+                            type="radio" name="instructor"/>{'Instructor'}
+                        </Label>
+                    </FormGroup>
+                </FormGroup>
+
+                <FormGroup className="dob">
+                    <Label htmlFor="birthday">DOB</Label>
                     <DatePicker 
                         selected={startDate}
                         onChange={date => setStartDate(date)}
@@ -151,147 +192,14 @@ const RegisterForm = () => {
                         dropdownMode="select"
                        
                     />
-                </Dob>
-                <Divstyles className="submitform">
-                    <Button type='submit'>SIGN UP</Button>
-                </Divstyles>
+                </FormGroup>
+                <FormGroup className="submitform">
+                    <Button type='submit' style={{backgroundImage: 'linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5))', color: '#f1faee',textShadow: '2px 2px black'}}>SIGN UP</Button>
+                </FormGroup>
             </Form>
-            <Anywherefitness className="anywhere-fitness">
-                <h1>ANYWHERE FITNESS LETS CLIENTS AND INSTRUCTORS TAKE CONTROL OVER THEIR FITNESS</h1>
-            </Anywherefitness>
-            <Accountbox className="account-box">
-                <Clientbox className="client-box">
-                    <Clientpackage className="clinet-package">
-                        <h1>CLIENT ACCOUNT</h1>
-                        <h2>GROUP CLASSES TO</h2>
-                        <h3>FIT ANY PREFERENCE OR SCHEDULE</h3>
-                    </Clientpackage>
-                </Clientbox>
-
-                <Instructorbox className="instructor-box">
-                    <Instructorpackage className = "instructor-package">
-                        <h1>INSTRUCTOR ACCOUNT</h1>
-                        <h2>SCHEDULE CLASSES AND RETAIN CLIENTS</h2>
-                        <h3>TEACH ANYWHERE WITH ANYWHERE FITNESS</h3>
-                    </Instructorpackage>
-                </Instructorbox>
-            </Accountbox>
-        </Container>
+        </div>
     )
 }
 
-const Anywherefitness = styled.div`
-    color: #f1faee;
-    text-shadow: 2px 2px black;
-    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
-    padding: 1%;
-`
 
-const Accountbox = styled.div`
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    color: #f1faee;
-    text-shadow: 2px 2px black;
-    margin-left: 5%;
-    margin-right: 5%;
-`
-const Clientbox = styled.div`
-    border: 1px solid black;
-    background-image: url("https://images.pexels.com/photos/866023/pexels-photo-866023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    background-size: 1500px 1000px;
-    background-position: center;
-    height: 800px;
-    width: 100%;
-`
-const Clientpackage = styled.div`
-    box-shadow: 1px 1px 5px black;
-    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
-    padding: 1%;
-    position: relative;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 10%;   
-`
-
-const Instructorbox = styled.div`
-    border: 1px solid black;
-    background-image: url("https://images.pexels.com/photos/3822689/pexels-photo-3822689.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    height: 800px;
-    width: 100%;
-    margin-left: 1%;
-    background-position: center;
-`
-const Instructorpackage = styled.div`
-    box-shadow: 1px 1px 5px black;
-    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
-    padding: 1%;
-    position: relative;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 10%;
-`
-const Container = styled.div`
-    height: 1000px;
-    text-shadow: 2px 2px black;  
-`
-const Video = styled.video`
-    width: 100%;
-`
-const Form = styled.form`
-    box-shadow: 1px 1px 5px;
-    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
-    padding: 1%;
-    position: absolute;
-    top: 40%;
-    left: 75%;
-    transform: translate(-50%, -50%);
-    margin-top: 10%;
-`
-
-const Divstyles = styled.div`
-    margin-bottom: 1%;
-    color: #f1faee;
-`
-const Titlediv = styled.div`
-    background-image: linear-gradient(to right, rgba(60,152,255,.5), rgba(60,152,255,.5), rgba(60,152,255,.5));
-    color: #f1faee;
-    font-family: 'Merriweather Sans', sans-serif;
-    box-shadow: 1px 1px 5px black;
-    margin-bottom: 3%;
-    width: 400px;
-    padding: 1%;
-`
-const Input = styled.input`
-    font-family: 'Lato', sans-serif;
-    width: 100%;
-    padding: 3px 2px;
-    margin: 8px 0;
-    box-sizing: border-box;
-`
-const Dob = styled.div`
-    color: #f1faee;
-    margin-bottom: 1%;
-    width: 100%;
-    padding: 3px 2px;
-    margin: 8px 0;
-    box-sizing: border-box;
-`
-
-const Labelstyles = styled.label`
-    margin-right: 1%;
-`
-const Button = styled.button`
-    background-image: linear-gradient(to right, rgba(0,78,164,.7), rgba(0,78,164,.5), rgba(0,78,164,.5));
-    color: #f1faee;
-    font-family: 'Lato', sans-serif;
-    width: 100%;
-    padding: 13px 2px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    font-size: 1.5rem;
-    text-shadow: 2px 2px black;
-`
 export default RegisterForm;
