@@ -73,7 +73,9 @@ const RegisterForm = () => {
     // }
 
         axios.post("https://anywhere-fitness4.herokuapp.com/api/auth/client_register", newUser)
-             .then(res=> console.log(res))
+             .then(res=> { console.log(res);
+             window.localStorage.setItem('token', res.data.password)
+             })
              .catch(err => console.log(err, "New User Not Created"));
     
     }
@@ -205,7 +207,7 @@ const RegisterForm = () => {
                                 name="client"
                                 value="client"
                                 onChange={radioButtonChange}
-                                checked="false"
+                                checked={false}
                                 />Client
                         </Label>
                     </FormGroup> 
@@ -216,7 +218,7 @@ const RegisterForm = () => {
                             name="instructor"
                             value="instructor"
                             onChange={radioButtonChange}
-                            checked="false"
+                            checked= {false}
                             />Instructor
                         </Label>
                     </FormGroup>

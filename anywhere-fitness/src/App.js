@@ -5,6 +5,7 @@ import LoginForm from './Components/LoginForm';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //import styled from 'styled-components'
 import './App.css';
+import InstructorDashboard from './Components/instructor/InstructorDashboard';
 
 // function App() {
 //   return (
@@ -47,6 +48,7 @@ function App() {
             <Route exact path='/' component={LoginForm} />
             <Route path="/LoginForm" component={LoginForm} />
             <Route path="/RegisterForm" component={RegisterForm} />
+            <Route path="/instructor" component={InstructorDashboard} />         
           </Switch>
         </div>
       </div>
