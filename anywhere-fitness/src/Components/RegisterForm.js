@@ -7,14 +7,26 @@ import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import WebsiteVideo from './WebsiteVideo.mp4'
 
 const RegisterForm = () => {
-    const user = {
+    
+    const initialState = {
         firstname: "",
         lastname: "",
         email: "",
         username: "",
         password: "",
+        instructor: false,
+        
     }
-    const [newUser, setNewUser] = useState(user)
+    const [formState, setFormState] = useState(initialState)
+    
+    const [newUser, setNewUser] = useState(formState)
+
+    //const [clients, setClients] = useState([])
+    
+    //const [instructors, setInstructors] = useState([])
+
+    
+    
 
     let formSchema=yup.object().shape({
         firstname: yup
@@ -40,20 +52,40 @@ const RegisterForm = () => {
         })
 
     const submitUser = e => {
+        
         e.preventDefault();
-        console.log("New User Created");
-        axios
-            .post("https://reqres.in/api/users", newUser)
+
+        setNewUser({
+            username: formState.username, 
+            password: formState.password
+            })
+        console.log(newUser);
+       
+        // if (radioButton.value === "client"){
+
+    //              setClients(...clients, newUser)
+    //              console.log(clients);
+                 
+    // } 
+    // else if (radioButton.value === "instructor" ){
+    //             setInstructors(...instructors, newUser);
+    //             console.log(instructors);
+    // }
+
+        axios.post("https://anywhere-fitness4.herokuapp.com/api/auth/client_register", newUser)
+             .then(res=> console.log(res))
              .catch(err => console.log(err, "New User Not Created"));
-    };
+    
+    }
 
     const inputChange = e => {
-        setNewUser({
-            ...newUser,
+        
+        setFormState({
+            ...formState,
             [e.target.name]:e.target.value
         });
-            console.log(e.target.name);
-            console.log(e.target.value);
+            //console.log(e.target.name);
+         ;
     }
 
     const radioButtons  = {
@@ -104,12 +136,12 @@ const RegisterForm = () => {
                     className="firstname">
                         <Label for="firstname">FIRST NAME</Label>
                             <Input
-                                type="firstname"
+                                type="text"
                                 name="firstname"
                                 id="firstname"
                                 placeholder="First Name"
                                 onChange={inputChange}
-                                value={newUser.firstname}
+                                value={formState.firstname}
                             />
                 </FormGroup>
 
@@ -118,8 +150,8 @@ const RegisterForm = () => {
                         <Label for="lastname">LAST NAME</Label>
                             <Input
                                 onChange={inputChange}
-                                value={newUser.lastname}
-                                type="lastname"
+                                value={formState.lastname}
+                                type="text"
                                 name="lastname"
                                 id="lastname"
                                 placeholder="Last Name"
@@ -131,7 +163,7 @@ const RegisterForm = () => {
                         <Label for="email"> EMAIL</Label>
                             <Input
                                 onChange={inputChange}
-                                value={newUser.email}
+                                value={formState.email}
                                 type="email"
                                 name="email"
                                 id="email"
@@ -144,7 +176,7 @@ const RegisterForm = () => {
                         <Label for="username">USERNAME</Label>
                             <Input
                                 onChange={inputChange}
-                                value={newUser.username}
+                                value={formState.username}
                                 type="username"
                                 name="username"
                                 id="username"
@@ -157,7 +189,7 @@ const RegisterForm = () => {
                         <Label htmlFor="password">PASSWORD</Label>
                             <Input
                                 onChange={inputChange}
-                                value={newUser.password}
+                                value={formState.password}
                                 type="password"
                                 name="password"
                                 id="password"
@@ -170,13 +202,22 @@ const RegisterForm = () => {
                         <Label check>
                             <Input 
                                 type="radio" 
-                                name="client"/>{'Client'}
+                                name="client"
+                                value="client"
+                                onChange={radioButtonChange}
+                                checked="false"
+                                />Client
                         </Label>
                     </FormGroup> 
                     <FormGroup>
                         <Label check>
                             <Input 
-                            type="radio" name="instructor"/>{'Instructor'}
+                            type="radio" 
+                            name="instructor"
+                            value="instructor"
+                            onChange={radioButtonChange}
+                            checked="false"
+                            />Instructor
                         </Label>
                     </FormGroup>
                 </FormGroup>
