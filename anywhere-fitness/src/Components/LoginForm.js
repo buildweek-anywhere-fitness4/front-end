@@ -1,19 +1,51 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import axios from "axios";
+const Login = () => {
+    
+    const initialState = {
+        username: "",
+        password: ""
+    }
+    
+    const [formState, setFormState] = useState(initialState)
+    
+    const inputChangeHandler = (e) => {
+        setFormState({...formState, [e.target.name] : e.target.value})
+    }
+    
+    const loginSubmitHandler = (e) => {
+       
+        e.preventDefault();
+        console.log(formState);
+        axios.post("https://anywhere-fitness4.herokuapp.com/api/auth/client_login", formState)
+        .then(res => console.log(res))
+        .catch(err=> console.log(err))
 
-export default class Login extends Component {
-    render() {
+    };
+    
         return (
-            <form>
+            <form onSubmit={loginSubmitHandler}>
                 <h3>Sign In</h3>
 
                 <div className="form-group">
-                    <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <label>Username</label>
+                    <input 
+                    type="text" 
+                    className="form-control" 
+                    name="username" 
+                    value={formState.username} 
+                    onChange={inputChangeHandler} 
+                    placeholder="Enter username" />
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <input type="password"
+                     className="form-control" 
+                     name="password"
+                     value={formState.password}
+                     onChange={inputChangeHandler}
+                     placeholder="Enter password" />
                 </div>
 
                 <div className="form-group">
@@ -29,8 +61,10 @@ export default class Login extends Component {
                 </p>
             </form>
         );
-    }
-}
+    };
+    
+    export default Login;
+
    
 
 
