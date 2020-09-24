@@ -1,5 +1,37 @@
-.instructorcode {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
+.registerForm {
+    position: absolute;
+    top: 16%;
+    left: 50%;
+    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
+    padding: 2.61%;
+    color: #f1faee;
+    text-shadow: 2px 2px black;
+    box-shadow: 1px 1px 5px black;
 }
+.formtitle {
+    background-image: linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5)); padding: 1%;
+     box-shadow: 1px 1px 5px black;
+}
+.radioBox {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+}
+
+.instructorCode {
+   margin-left: 5%;
+}
+
+
+.button{
+    background-image: linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5));
+    color: #f1faee;
+    text-shadow: 2px 2px black;
+}
+.video {
+    width: 100%;
+    height: 95%;
+    padding: 3.0%;
+}
+
+
