@@ -1,37 +1,79 @@
-.registerForm {
-    position: absolute;
-    top: 16%;
-    left: 50%;
-    background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
-    padding: 2.61%;
-    color: #f1faee;
-    text-shadow: 2px 2px black;
-    box-shadow: 1px 1px 5px black;
-}
-.formtitle {
-    background-image: linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5)); padding: 1%;
-     box-shadow: 1px 1px 5px black;
-}
-.radioBox {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
+@media only screen and (max-width: 600px) {
+    .promovid {
+        overflow: hidden;
+    }
+    .backgroundvideo {
+       width: 100%;
+       
+    }
+    .registerForm {
+        position: absolute;
+        top: 50%;
+        left: 1%;
+        right: 1%;
+        background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
+        padding: 3%;
+        color: #f1faee;
+        text-shadow: 2px 2px black;
+        box-shadow: 1px 1px 5px black;
+    }
+
+    .formtitle {
+        background-image: linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5)); padding: 1%;
+        box-shadow: 1px 1px 5px black;
+    }
+    .radioBox {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+    }
+    .instructorCode {
+       margin-left: 10%;
+    }
+    .button{
+        background-image: linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5));
+        color: #f1faee;
+        text-shadow: 2px 2px black;
+    }
 }
 
-.instructorCode {
-   margin-left: 5%;
+@media only screen and (min-width: 768px) {
+    .registerForm {
+        position: absolute;
+        top: 16%;
+        left: 55%;
+        background-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.5), rgba(0,0,0,.5));
+        padding: 2.61%;
+        color: #f1faee;
+        text-shadow: 2px 2px black;
+        box-shadow: 1px 1px 5px black;
+    }
+    .formtitle {
+        background-image: linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5)); padding: 1%;
+         box-shadow: 1px 1px 5px black;
+    }
+    .radioBox {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+    }
+    
+    .instructorCode {
+       margin-left: 5%;
+    }
+    
+    
+    .button{
+        background-image: linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5));
+        color: #f1faee;
+        text-shadow: 2px 2px black;
+    }
+    .video {
+        width: 100%;
+        height: 95%;
+        padding: 3.0%;
+    }
+   
+    
+
 }
-
-
-.button{
-    background-image: linear-gradient(to right, rgba(28,9,32,.5), rgba(28,9,32,.5), rgba(28,9,32,.5));
-    color: #f1faee;
-    text-shadow: 2px 2px black;
-}
-.video {
-    width: 100%;
-    height: 95%;
-    padding: 3.0%;
-}
-
-

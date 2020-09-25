@@ -4,7 +4,6 @@ import axios from 'axios';
 import * as yup from 'yup';
 import "react-datepicker/dist/react-datepicker.css";
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
-import $ from 'jquery';
 import WebsiteVideo from './WebsiteVideo.mp4'
 import  './RegisterForm.css'
 
@@ -106,12 +105,13 @@ const RegisterForm = () => {
     const backgroundVideo = WebsiteVideo
 
     return (
-        <div style={{marginTop: '3%'}}>
-           
-              <video id="background-video" loop autoPlay>
+        <div className="formholder" style={{marginTop: '3%'}}>
+            <div className="promovid">
+                <video className="backgroundvideo" id="background-video" loop autoPlay>
                     <source src={backgroundVideo}type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
+            </div>
             <Form 
                 className="registerForm" 
                 onSubmit={submitUser} 
