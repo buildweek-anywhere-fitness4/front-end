@@ -1,5 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
+import * as Yup from 'yup'
+
+
+const loginFormSchema = Yup.object().shape({
+    email: Yup.string()
+              .email("Email is not in the expected format")
+              .required("Email is missing"),
+    password: Yup.string()
+              .required("Password is required")
+              .min(8, "Password must be 8 characters at minimum")
+  });
+  
+
 const Login = () => {
     
     const initialState = {
@@ -24,7 +37,9 @@ const Login = () => {
     };
     
         return (
-            <form onSubmit={loginSubmitHandler}>
+            <form onSubmit={loginSubmitHandler}
+             validateSchema={loginFormSchema}>
+
                 <h3>Sign In</h3>
 
                 <div className="form-group">
