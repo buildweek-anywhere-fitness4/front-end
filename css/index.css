@@ -2307,6 +2307,19 @@ input, select, textarea {
 			cursor: default;
 		}
 
+        #head-text {
+    text-align: center;
+        } 
+
+        #trademark {
+            font-size: 0.8rem;
+        }
+
+        #reviews {
+            text-align: center;
+            margin-bottom: 2%;
+        }
+
 		#footer h2, #footer h3, #footer h4, #footer h5, #footer h6 {
 			color: #fff;
 		}
