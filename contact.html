@@ -40,9 +40,18 @@
 								<p>
 									Fill out the form below for an information request.
                                 </p>
-                                <i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-down" aria-hidden="true"></i>
-							</header>
-							<a href="#" class="image featured">SOME KIND OF PICTURE</a>
+                                <div id="arrow-icons">
+                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                </div>
+                                <br />
+                            </header>
+                            <div id="contact-photo">
+                                <img src="images/bruno-nascimento-PHIgYUGQPvU-unsplash.jpg" alt="woman-on-stairs">
+                            </div>
+                            <br />
 							<p>
 								As a premium member, you will receive exclusive deals and offers on our partner services, as well as major discounts on all Anywhere Fitness services - including 24/7 access to chat with a personalized, dedicated team of specialists.
 							</p>
@@ -61,15 +70,43 @@
                                     Please continue below to fill out the form for a detailed information request.
                                 </p>
                                 <div id="form-box">
-                                    <p>INSERT GENERIC FORM HERE!</p>
+                                    <form method="post" action="contact-form-process.php">
+        
+                                        <div>
+                                            <label for="Name"><p>Your name</p></label>
+                                            <div>
+                                                <input type="text" id="Name" name="Name" required>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div>
+                                            <label for="Email"><p>Your email address</p></label>
+                                            <div>
+                                                <input type="email" id="Email" name="Email" required>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div>
+                                            <label for="Message" ><p>What would you like to say?</p></label>
+                                            <div>
+                                                <textarea id="Message" name="Message" rows="6" maxlength="3000" required></textarea>
+                                            </div>
+                                        </div>
+                                
+                                        <div>
+                                            <button type="submit">Send Message</button>
+                                        </div>
+                                
                                 </div>
 							</section>
 						</div>
 					</div>
 
 				</div>
-
 				<div id="footer">
+                    <div id="A-F-bot">
+                    <a href="index.html"><h3>Anywhere Fitness</h3></a>
+                    </div>
 					<div class="container">
 						<hr />
 						<div class="row">
