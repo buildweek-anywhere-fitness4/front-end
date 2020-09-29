@@ -1,10 +1,21 @@
 import React, { useContext } from "react";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 import { FitnessClassContext } from "./InstructorDashboard";
 
 const Class = () => {
   console.log(FitnessClassContext);
   const classArray = useContext(FitnessClassContext);
- 
+  
+  const deleteClass = (fitnessClass) => {
+    let id = fitnessClass.id;
+   
+    axiosWithAuth()
+      .delete(`/api/class/${id}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(err=> console.log(err))
+  };
   return (
     <div>
       {classArray.map((item) => {
@@ -18,6 +29,7 @@ const Class = () => {
             <p>{item.location}</p>
             <p>{item.register_attendees}</p>
             <p>{item.max_size}</p>
+            <button onClick={deleteClass}>Delete Class</button>
           </div>
         );
       })}

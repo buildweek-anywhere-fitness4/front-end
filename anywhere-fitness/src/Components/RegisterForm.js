@@ -7,7 +7,10 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import WebsiteVideo from "./WebsiteVideo.mp4";
 
 const RegisterForm = () => {
+  const [userID, setUserID] = useState(0);
+
   const initialState = {
+    id: userID,
     firstname: "",
     lastname: "",
     email: "",
@@ -18,7 +21,6 @@ const RegisterForm = () => {
   const [formState, setFormState] = useState(initialState);
 
   const [newUser, setNewUser] = useState(formState);
-  const [userID, setUserID] = useState(0);
   //const [clients, setClients] = useState([])
 
   //const [instructors, setInstructors] = useState([])
@@ -39,7 +41,8 @@ const RegisterForm = () => {
 
   const submitUser = (e) => {
     e.preventDefault();
-    setUserID(userID+1);
+    setUserID(userID + 1);
+    //radioButton;
     setNewUser({
       id: userID,
       username: formState.username,

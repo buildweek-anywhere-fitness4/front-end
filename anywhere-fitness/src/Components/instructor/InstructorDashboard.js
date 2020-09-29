@@ -6,7 +6,7 @@ import FitnessClass from "./FitnessClass";
 export const FitnessClassContext = createContext();
 
 function InstructorDashboard() {
- // const [clients, setClients] = useState([]);
+  // const [clients, setClients] = useState([]);
   const [classes, setClasses] = useState([]);
   const [id, setID] = useState(0);
 
@@ -28,8 +28,8 @@ function InstructorDashboard() {
       .get("/api/client")
       .then((res) => {
         console.log(res);
-       // setClients(res.data)
-        })
+        // setClients(res.data)
+      })
       .catch((err) => console.log(err));
   };
 
@@ -38,8 +38,8 @@ function InstructorDashboard() {
       .get("/api/class")
       .then((res) => {
         console.log(res);
-        setClasses(res.data)
-        })
+        setClasses(res.data);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -133,7 +133,7 @@ function InstructorDashboard() {
         </form>
       </div>
       <FitnessClassContext.Provider value={classes}>
-      <FitnessClass id={Date.now()} />
+        <FitnessClass id={Date.now()} />
       </FitnessClassContext.Provider>
     </div>
   );

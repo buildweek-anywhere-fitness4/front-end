@@ -38,8 +38,8 @@ function App() {
           <div className="auth-inner">
             <Switch>
               <Route exact path="/" component={LoginForm} />
-              <Route path="/LoginForm" component={LoginForm} />
-              <Route path="/RegisterForm" component={RegisterForm} />
+              <Route exact path="/LoginForm" component={LoginForm} />
+              <Route exact path="/RegisterForm" component={RegisterForm} />
               <PrivateRoute
                 exact
                 path="/instructor"
