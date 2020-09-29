@@ -8,21 +8,6 @@ import "./App.css";
 import InstructorDashboard from "./Components/instructor/InstructorDashboard";
 import PrivateRoute from "./utils/PrivateRoute";
 
-// function App() {
-//   return (
-
-//     <div className="App">
-//       <Link to ="/RegisterForm"> Register Now </Link>
-//       <Route path="/RegisterForm">
-//         <RegisterForm />
-//       </Route>
-
-//     </div>
-//   );
-// }
-
-// export default App;
-
 function App() {
   return (
     <Router>

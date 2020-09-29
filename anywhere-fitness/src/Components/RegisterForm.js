@@ -18,7 +18,7 @@ const RegisterForm = () => {
   const [formState, setFormState] = useState(initialState);
 
   const [newUser, setNewUser] = useState(formState);
-
+  const [userID, setUserID] = useState(0);
   //const [clients, setClients] = useState([])
 
   //const [instructors, setInstructors] = useState([])
@@ -39,8 +39,9 @@ const RegisterForm = () => {
 
   const submitUser = (e) => {
     e.preventDefault();
-
+    setUserID(userID+1);
     setNewUser({
+      id: userID,
       username: formState.username,
       password: formState.password,
     });

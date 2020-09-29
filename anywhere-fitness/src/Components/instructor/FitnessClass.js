@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FitnessClassContext } from "./InstructorDashboard";
 
-const Class = (props) => {
-  console.log(props);
-  const classArray = props.classes;
-
+const Class = () => {
+  console.log(FitnessClassContext);
+  const classArray = useContext(FitnessClassContext);
+ 
   return (
     <div>
       {classArray.map((item) => {

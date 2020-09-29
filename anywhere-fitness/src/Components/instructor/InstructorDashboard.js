@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import axiosWithAuth from "../../utils/axiosWithAuth";
 //import axios from "axios";
 import FitnessClass from "./FitnessClass";
 
-function InstructorDashboard(props) {
-  //const [clients, setClients] = useState([])
+export const FitnessClassContext = createContext();
+
+function InstructorDashboard() {
+ // const [clients, setClients] = useState([]);
   const [classes, setClasses] = useState([]);
-  const [classID, setClassID] = useState(0);
+  const [id, setID] = useState(0);
 
   const [newClass, setNewClass] = useState({
-    id: classID,
+    id: id,
     name: "",
     type: "",
     start_time: "",
@@ -24,17 +26,30 @@ function InstructorDashboard(props) {
   const getClients = () => {
     axiosWithAuth
       .get("/api/client")
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+       // setClients(res.data)
+        })
+      .catch((err) => console.log(err));
+  };
+
+  const getClasses = () => {
+    axiosWithAuth
+      .get("/api/class")
+      .then((res) => {
+        console.log(res);
+        setClasses(res.data)
+        })
       .catch((err) => console.log(err));
   };
 
   const createClass = (e) => {
     e.preventDefault();
-    setClassID(classID + 1);
+    setID(id + 1);
     setClasses([...classes, newClass]);
     console.log(classes);
     axiosWithAuth()
-      .post("https://anywhere-fitness4.herokuapp.com/api/class/:id", newClass)
+      .post(`https://anywhere-fitness4.herokuapp.com/api/class/${id}`, newClass)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -46,7 +61,7 @@ function InstructorDashboard(props) {
   return (
     <div>
       <div className="getClients">
-        <button onClick={getClients}> Get Registered Clients </button>
+        <button onClick={getClasses}> Get List of Classes </button>
       </div>
       <div className="createClass">
         <form onSubmit={createClass}>
@@ -117,7 +132,9 @@ function InstructorDashboard(props) {
           <button type="submit">Create a Class</button>
         </form>
       </div>
-      <FitnessClass classes={classes} />
+      <FitnessClassContext.Provider value={classes}>
+      <FitnessClass id={Date.now()} />
+      </FitnessClassContext.Provider>
     </div>
   );
 }
