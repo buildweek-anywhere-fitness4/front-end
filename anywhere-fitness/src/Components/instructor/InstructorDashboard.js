@@ -49,7 +49,7 @@ function InstructorDashboard() {
     setClasses([...classes, newClass]);
     console.log(classes);
     axiosWithAuth()
-      .post(`https://anywhere-fitness4.herokuapp.com/api/class/${id}`, newClass)
+      .post(`https://anywhere-fitness4.herokuapp.com/api/class/:id`, newClass)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
